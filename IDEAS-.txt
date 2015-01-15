@@ -1,0 +1,40 @@
+IDEAS-
+
+blog platform
+ecommerce site
+find coffee
+simple games-- frogger, platform jump
+find cheapest price on line
+
+--FIND ME COFFEE 
+map display- showing all the coffee shop location in 5 mile(?) radius
+  - placing a marker of current location
+  - business name 
+  - star rating
+  - biz hours
+  - click on biz to get direction?
+list display- 
+  - biz name
+  - distance in mile from current/given location
+  - star rating(yelp)
+  - biz hour
+  - click on biz to get direction?
+
+
+  HTML-
+  get google map onto the page
+    -check stack overflow ang gmap api instruction
+    -register for google developer API. <- need API code for map
+  after map, learn how to ask the map questions 
+    -how to query/ask it questions
+      - google API use geocoding, physical address => longitude/latitude
+  adding functions
+    -input box, check box
+  add icons to google map to show locations
+  prepend list of location/biz by distance and basic info
+
+
+  things i learned
+  using google map javascript API
+    - https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+    follow instruction from "obataining API"

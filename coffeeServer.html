@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <title>find me coffee!!</title>
+
+    <style type="text/css">
+     #map-canvas { 
+        height: 500px;
+        width: 48%;
+      }
+    </style>
+    
+  </head>
+    <h1>where is my coffee SERVER test</h1>
+    <body>
+      <!--<input class = "location"> </input>
+      <button class = "search"> search now </button>
+    -->
+      <div id = "map-canvas"></div>
+      <span id = "shopList"></span>
+         
+      <script type="text/javascript">
+        $(document).ready(function(){
+
+        // initial map setup
+          var myMap; 
+          //var myLocation;
+          var infowindow = new google.maps.InfoWindow();
+          var myLatLng = new google.maps.LatLng(37.3228338, -122.01801640000001);
+          var initialize = function() {
+            
+            var mapOptions = {
+              center: myLatLng,
+              zoom: 14
+            };
+
+            myMap = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+
+            
+            //setting marker of current location
+            var image = {
+              url: 'http://i.imgur.com/etjgJ2Db.jpg',
+              //size: new google.maps.Size(50, 50),
+              scaledSize: new google.maps.Size(50, 50)
+            }
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              animation: google.maps.Animation.DROP,
+              title: 'my location',
+              icon: image
+              
+            });
+            marker.setMap(myMap);
+
+            var request = {
+              location: myLatLng,
+              radius: '1500',
+              keyword: 'coffee',
+              type: ['store'],
+              openNow: 'true'
+            };
+            var service = new google.maps.places.PlacesService(myMap);
+            service.nearbySearch(request, callback);
+
+            //below code for list version
+          }
+          
+          google.maps.event.addDomListener(window, 'load', initialize);
+
+
+            //setting markers for nearby coffee
+
+            //var infowindow = new google.maps.Infowindow();
+            
+          var callback = function(result, status){
+            if(status == google.maps.places.PlacesServiceStatus.OK){
+              for(var i = 0; i < result.length; i++){
+                var coffee = result[i];
+                createMarker(coffee);
+                appendList(coffee)
+              }
+            }
+          }
+
+          function createMarker(place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+              map: myMap,
+              position: place.geometry.location
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+              console.log(place)
+              infowindow.setContent(place.name + "</br>" + place.vicinity);
+              infowindow.open(myMap, this);
+            });
+          }
+
+          var appendList = function(place){
+            var $shopList = $('#shopList');
+            var $coffeeStore = $('<div><ul></ul><div>');
+            for(name in place){
+              $coffeeStore.html(place.name + "--" + place.vicinity);
+              $coffeeStore.prependTo(shopList)
+            }
+          }
+          
+        });
+      </script>
+    </body>
+</html>
