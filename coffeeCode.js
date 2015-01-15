@@ -1,34 +1,9 @@
 $(document).ready(function(){
 
-  console.log("body, hello")
-
-  // var x = document.getElementById("demo");
-  // function getLocation() {
-  //     if (navigator.geolocation) {
-  //         navigator.geolocation.getCurrentPosition(showPosition);
-  //     } else {
-  //         x.innerHTML = "Geolocation is not supported by this browser.";
-  //     }
-  // }
-  // function showPosition(position) {
-  //     x.innerHTML = "Latitude: " + 37.3228338 + 
-  //     "<br>Longitude: " + -122.01801640000001;
-  // }
-  // showPosition()
-
-
-// var get_location = function() {
-//   if (Modernizr.geolocation) {
-//     navigator.geolocation.getCurrentPosition(show_map);
-//   } else {
-//     alert("no GPS")
-//   }
-// }
-// console.log(Modernizr)
 // initial map setup
   var myMap; 
   //var myLocation;
-  var infowindow;
+  var infowindow = new google.maps.InfoWindow();
   var myLatLng = new google.maps.LatLng(37.3228338, -122.01801640000001);
   var initialize = function() {
     
@@ -42,22 +17,31 @@ $(document).ready(function(){
 
     
     //setting marker of current location
+    var image = {
+      url: 'http://i.imgur.com/etjgJ2Db.jpg',
+      //size: new google.maps.Size(50, 50),
+      scaledSize: new google.maps.Size(50, 50)
+    }
     var marker = new google.maps.Marker({
       position: myLatLng,
       animation: google.maps.Animation.DROP,
-      title: 'my location'
+      title: 'my location',
+      icon: image
+      
     });
     marker.setMap(myMap);
 
     var request = {
       location: myLatLng,
-      radius: '1000',
+      radius: '1500',
       keyword: 'coffee',
       type: ['store'],
       openNow: 'true'
     };
     var service = new google.maps.places.PlacesService(myMap);
     service.nearbySearch(request, callback);
+
+    //below code for list version
   }
   
   google.maps.event.addDomListener(window, 'load', initialize);
@@ -84,13 +68,27 @@ $(document).ready(function(){
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(places.name);
+      console.log(place)
+      infowindow.setContent(place.name + "</br>" + place.vicinity);
       infowindow.open(myMap, this);
     });
+    var $shopList = $('#shopList');
+    var $coffeeStore = $('<div><ul></ul><div>');
+    var appendList = function(){
+      for(name in place){
+        $coffeeStore.html(place.name + "--" + place.vicinity);
+        $coffeeStore.prependTo(shopList)
+      }
+    }
+    appendList()
   }
+
+
+
+
 });
 
-  
+
 
 
       
@@ -108,3 +106,26 @@ $(document).ready(function(){
 
 
 // });
+  // var x = document.getElementById("demo");
+  // function getLocation() {
+  //     if (navigator.geolocation) {
+  //         navigator.geolocation.getCurrentPosition(showPosition);
+  //     } else {
+  //         x.innerHTML = "Geolocation is not supported by this browser.";
+  //     }
+  // }
+  // function showPosition(position) {
+  //     x.innerHTML = "Latitude: " + 37.3228338 + 
+  //     "<br>Longitude: " + -122.01801640000001;
+  // }
+  // showPosition()
+
+
+// var get_location = function() {
+//   if (Modernizr.geolocation) {
+//     navigator.geolocation.getCurrentPosition(show_map);
+//   } else {
+//     alert("no GPS")
+//   }
+// }
+// console.log(Modernizr)
