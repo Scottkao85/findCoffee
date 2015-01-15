@@ -55,7 +55,8 @@ $(document).ready(function(){
     if(status == google.maps.places.PlacesServiceStatus.OK){
       for(var i = 0; i < result.length; i++){
         var coffee = result[i];
-        createMarker(result[i]);
+        createMarker(coffee);
+        appendList(coffee)
       }
     }
   }
@@ -72,16 +73,18 @@ $(document).ready(function(){
       infowindow.setContent(place.name + "</br>" + place.vicinity);
       infowindow.open(myMap, this);
     });
+  }
+
+  var appendList = function(place){
     var $shopList = $('#shopList');
     var $coffeeStore = $('<div><ul></ul><div>');
-    var appendList = function(){
-      for(name in place){
-        $coffeeStore.html(place.name + "--" + place.vicinity);
-        $coffeeStore.prependTo(shopList)
-      }
+    for(name in place){
+      $coffeeStore.html(place.name + "--" + place.vicinity);
+      $coffeeStore.prependTo(shopList)
     }
-    appendList()
   }
+  
+
 
 
 
