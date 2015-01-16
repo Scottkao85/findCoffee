@@ -1,0 +1,30 @@
+{
+  "name": "findCoffee",
+  "version": "1.0.0",
+  "description": "Immediately see local coffee shops in Google maps",
+  "main": "coffeeCode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Scottkao85/findCoffee.git"
+  },
+  "keywords": [
+    "local",
+    "coffee",
+    "study",
+    "cafe",
+    "wifi"
+  ],
+  "author": "Scott Kao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Scottkao85/findCoffee/issues"
+  },
+  "homepage": "https://github.com/Scottkao85/findCoffee",
+  "dependencies": {
+    "express": "^4.11.0"
+  }
+}
