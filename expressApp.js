@@ -4,11 +4,12 @@ var path = require('path');
 var fs = require('fs');
 
 var bowerPath = path.join(__dirname, 'bower_components');
-console.log('my __dirname: ', __dirname);
-console.log('my __dirname full: ', path.join(__dirname, 'bower_components'));
+var appPath = path.join(__dirname, 'app');
+var stylePath = path.join(__dirname, 'style');
 
-
-app.use(express.static(bowerPath));
+app.use('/bower_components', express.static(bowerPath));
+app.use('/style', express.static(stylePath));
+app.use('/app', express.static(appPath));
 
 app.get('/', function (req, res) {
   serveIndex(res);
