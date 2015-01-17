@@ -1,29 +1,38 @@
-var http = require('http');
+var express = require('express')
+var app = express()
+var path = require('path');
 var fs = require('fs');
 
-fs.readFile('coffeeServer.html', function (err, html) {
-  if (err) {
-      throw err; 
-  }      
-  http.createServer(function (req, res) {
+var bowerPath = path.join(__dirname, 'bower_components');
+var appPath = path.join(__dirname, 'app');
+var stylePath = path.join(__dirname, 'style');
 
-    res.writeHeader(200, {'Content-Type': 'text/html'});
-    res.write(html);  // <-- HERE!
-    res.end();
+app.use('/bower_components', express.static(bowerPath));
+app.use('/style', express.static(stylePath));
+app.use('/app', express.static(appPath));
 
-  }).listen(1337, '127.0.0.1');
+app.get('/', function (req, res) {
+  serveIndex(res);
+})
+
+var serveIndex = function (res) {
+  fs.readFile('coffee.html', function (err, html) {
+    if (err) { 
+      console.log('fs read err: ', err);
+      res.end('sorry err!');
+    } else {
+      res.writeHeader(200, {'Content-Type': 'text/html'});
+      res.write(html);  // <-- HERE!
+      res.end();
+    }
+  });
+};
+
+var server = app.listen(3000, function () {
+
+  var host = server.address().address
+  var port = server.address().port
+
+  console.log('Example app listening at http://%s:%s', host, port)
+
 });
-
-console.log('Server running at http://127.0.0.1:1337/');
-
-//////
-// fs.readFile('index.html', function (err, html) {
-//     if (err) {
-//         throw err; 
-//     }       
-//     http.createServer(function(request, response) { 
-//         response.writeHeader(200, {"Content-Type": "text/html"});  // <-- HERE!
-//         response.write(html);  // <-- HERE!
-//         response.end();  
-//     }).listen(1337, '127.0.0.1');
-// });
