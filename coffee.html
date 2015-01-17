@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="style/coffeeCSS.css">
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 
+    <!-- JQUERY -->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    
+    <!-- boot strap stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <!-- GOOGLE -->
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?libraries=places">
     </script>
 
+    <!-- MY CODE -->
+    <link rel="stylesheet" type="text/css" href="style/coffeeCSS.css">
     <script type="text/javascript" src="app/coffeeCode.js"></script>
+
     <title>find me coffee!!</title>
   </head>
 
 
-  <body>
-  <h1>where is my coffee</h1>
-    <!--<input class = "location"> </input>
-    <button class = "search"> search now </button>
-  -->
-    <div id = "map-canvas"></div>
-    <span id = "shopList"></span>
+  <body class='container-fluid'>
+    
+    <div class="text-center page-header">
+      <h1>Hello, World</h1>
+    </div>
+
+    <div class="row">
+      <div id="map-canvas" class="col-md-6" ></div>
+      <ul id="shopList" class="col-md-6"></ul>
+    </div>
+   
      
   </body>
   

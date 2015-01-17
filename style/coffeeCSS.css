@@ -1,12 +1,24 @@
-  body {
-    ;
-  } 
-  #map-canvas { 
-    height: 500px;
-    width: 48%;
-  }
+body {
+  background-color: #3D6999
+}
 
+.page-header {
+  color: #FF6B40
+}
 
+#map-canvas { 
+  background-color: #00FFFF;
+  border-color: #CC2314;
+  border: 8px solid;
+  height: 75vh;
+}
+
+#shopList {
+  /*height: 75vh;*/
+  background-color: #00FFFF;
+  border-top: #CC2314;
+  border: 8px solid;
+}
 
 
 
