@@ -104,7 +104,7 @@ $(document).ready(function(){
         var $coffeeStore = $('<li></li>');
 
         // $coffeeStore.html('<dl>' + '<dt>' + '<u>' + place.name + '</u>' + '</dt>'  + "<dd>" + place.vicinity + '</dd>' + '</dl>');
-        $coffeeStore.html('<p>' + place.name + '</p>' + '<p>' +  place.vicinity + '</p>');
+        $coffeeStore.html('<p class="placeName">' + place.name + '</p>' + '<p class="placeAddress">' +  place.vicinity + '</p>');
 
         $coffeeStore.prependTo($shopList);
       };

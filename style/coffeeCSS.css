@@ -1,24 +1,59 @@
+html, body {
+ /* font-size: 10px;*/
+  border: 20px solid #5E7399
+}
+
 body {
-  background-color: #3D6999
+}
+
+body {
+  background-color: #5E7399;
 }
 
 .page-header {
-  color: #FF6B40
+  color: #CC5340
 }
 
 #map-canvas { 
-  background-color: #00FFFF;
-  border-color: #CC2314;
+  background-color: #FF9D76;
+  border-color: #4073CC;
   border: 8px solid;
   height: 75vh;
 }
 
 #shopList {
   /*height: 75vh;*/
-  background-color: #00FFFF;
-  border-top: #CC2314;
+  background-color: #FF9D76;
+  border-top: #4073CC;
   border: 8px solid;
 }
 
+.placeName {
+  font-style: bold;
+  color: #CC2F18;
+}
+
+#shopList .placeAddress {
+  color: #5E7399;
+}
+
+@media screen and (max-width: 888px) {
+  p {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 20px;  
+  }
+}
+@media screen and (min-width: 992px) { 
+  p {
+    font-size: 16px;
+  }
+  
+  .title {
+    font-size: 90px;  
+  }
+}
 
 
